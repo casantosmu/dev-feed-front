@@ -8,6 +8,7 @@
     "react-app",
     "react-app/jest",
     "standard-with-typescript",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
     "plugin:prettier/recommended"
   ],
   "overrides": [],
@@ -16,6 +17,6 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "prettier"],
+  "plugins": ["react", "@tanstack/query", "prettier"],
   "rules": {}
 }
