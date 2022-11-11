@@ -1,7 +1,39 @@
-import Button from "@mui/material/Button";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
 
-const App = (): JSX.Element => {
-  return <Button variant="contained">Hello World</Button>;
-};
+const queryClient = new QueryClient();
 
-export default App;
+export default function App(): JSX.Element {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Example />
+    </QueryClientProvider>
+  );
+}
+
+function Example(): JSX.Element {
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: async () =>
+      await fetch(
+        "https://api.github.com/repos/tannerlinsley/react-query"
+      ).then(async (res) => await res.json()),
+  });
+
+  if (isLoading) return <>"Loading..."</>;
+
+  if (error === true) return <>"An error has occurred: " + error.message</>;
+
+  return (
+    <div>
+      <h1>{data.name}</h1>
+      <p>{data.description}</p>
+      <strong>👀 {data.subscribers_count}</strong>{" "}
+      <strong>✨ {data.stargazers_count}</strong>{" "}
+      <strong>🍴 {data.forks_count}</strong>
+    </div>
+  );
+}
