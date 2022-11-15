@@ -1,3 +1,1 @@
-import * as config from "./config";
-
-export default config;
+export * as constants from "./constants";

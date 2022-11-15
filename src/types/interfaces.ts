@@ -1,6 +1,6 @@
-import config from "../config";
+import { constants } from "../config";
 
-export type Categories = typeof config.categories[number];
+export type Categories = typeof constants.categories[number];
 
 export interface FeedBase {
   id: string;
