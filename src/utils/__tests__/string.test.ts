@@ -1,4 +1,4 @@
-import string from "../string";
+import { string } from "..";
 
 describe("Given a capitalizeFirstWord function", () => {
   describe("When it receives 'testing word'", () => {
@@ -38,10 +38,10 @@ describe("Given a getHostname function", () => {
 
   describe("When it receives an empty string: ''", () => {
     test("Then it should return an empty string: ''", () => {
-      const recivedString = "";
+      const receivedString = "";
       const expectedResult = "";
 
-      const result = string.getHostname(recivedString);
+      const result = string.getHostname(receivedString);
 
       expect(result).toBe(expectedResult);
     });

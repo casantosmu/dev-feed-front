@@ -13,9 +13,3 @@ export const feed = (feed: FeedBase): FeedNormalized => {
     externalUrlHostname: string.getHostname(feed.externalUrl),
   };
 };
-
-const normalizeApi = {
-  feed,
-};
-
-export default normalizeApi;

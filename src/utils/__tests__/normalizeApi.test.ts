@@ -1,6 +1,6 @@
+import { normalizeApi } from "..";
 import dateLib from "../../lib/dateLib";
 import { FeedBase, FeedNormalized } from "../../types";
-import normalizeApi from "../normalizeApi";
 
 describe("Given a feed function", () => {
   describe("When it receives a feed", () => {
