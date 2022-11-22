@@ -1,31 +1,51 @@
 import { normalizeApi } from "..";
+import { config } from "../../config";
 import dateLib from "../../lib/dateLib";
-import { FeedBase, FeedNormalized } from "../../types";
+import { FeedAPI, Feed } from "../../types";
 
 describe("Given a feed function", () => {
   describe("When it receives a feed", () => {
     test(
       "Then it should return the received feed with more data " +
-        "(detailsPath, timeFromNow, categoryText, categoryPath, userPath, externalUrlHostname)",
+        "(detailsPath, timeFromNow, categoryPath, userPath, urlHostname, image url)",
       () => {
-        const timeFromNow = "1 second";
+        const timeFromNow = "since 1 second";
+        const imageUrl = "http://mocked-endpoint.com";
         dateLib.timeFromNow = jest.fn().mockReturnValue(timeFromNow);
-        const feed: FeedBase = {
+        // Mock IMAGES_ENDPOINT environment configuration
+        Object.defineProperty(config, "imagesEndpoint", {
+          value: imageUrl,
+        });
+        const feed: FeedAPI = {
           id: "1234",
-          userAuthor: "carlos",
+          description: "A very long long description.",
+          createdBy: "carlos",
           category: "articles",
           createdAt: "august",
-          externalUrl: "http://url.ts",
+          url: "http://url.ts",
           heading: "Im a heading. Hello!",
+          image: {
+            description: "Some image description",
+            filename: "my-photo.jpg",
+            height: 45,
+            width: 45,
+          },
+          isVoted: true,
+          totalComments: 2340,
+          totalViews: 234,
+          totalVotes: 34,
         };
-        const expectedResult: FeedNormalized = {
+        const expectedResult: Feed = {
           ...feed,
           timeFromNow,
+          image: {
+            ...feed.image,
+            url: "http://mocked-endpoint.com/my-photo.jpg",
+          },
           detailsPath: "/articles/1234",
-          categoryText: "Articles",
           categoryPath: "/articles",
           userPath: "/user/carlos",
-          externalUrlHostname: "url.ts",
+          urlHostname: "url.ts",
         };
 
         const result = normalizeApi.feed(feed);
