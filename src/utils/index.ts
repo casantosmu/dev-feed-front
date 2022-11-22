@@ -1,2 +1,2 @@
-export { default as string } from "./string";
-export { default as normalizeApi } from "./normalizeApi";
+export * as string from "./string";
+export * as normalizeApi from "./normalizeApi";

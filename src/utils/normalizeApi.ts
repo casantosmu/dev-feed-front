@@ -1,21 +1,19 @@
 import { string } from ".";
+import { config } from "../config";
 import dateLib from "../lib/dateLib";
-import { FeedBase, FeedNormalized } from "../types";
+import { FeedAPI, Feed } from "../types";
 
-export const feed = (feed: FeedBase): FeedNormalized => {
+export const feed = (feed: FeedAPI): Feed => {
   return {
     ...feed,
     detailsPath: `/${feed.category}/${feed.id}`,
     timeFromNow: dateLib.timeFromNow(feed.createdAt),
-    categoryText: string.capitalizeFirstWord(feed.category),
     categoryPath: `/${feed.category}`,
-    userPath: `/user/${feed.userAuthor}`,
-    externalUrlHostname: string.getHostname(feed.externalUrl),
+    userPath: `/user/${feed.createdBy}`,
+    urlHostname: string.getHostname(feed.url),
+    image: {
+      ...feed.image,
+      url: `${config.imagesEndpoint}/${feed.image.filename}`,
+    },
   };
 };
-
-const normalizeApi = {
-  feed,
-};
-
-export default normalizeApi;

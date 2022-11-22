@@ -1,1 +1,1 @@
-export const categories = ["articles", "news"] as const;
+export const imagesEndpoint = process.env.REACT_APP_IMAGES_ENDPOINT ?? "";
