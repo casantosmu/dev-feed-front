@@ -18,5 +18,18 @@
     "project": "./tsconfig.json"
   },
   "plugins": ["react", "@tanstack/query", "prettier"],
-  "rules": {}
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          "@mui/*/*/*",
+          "!@mui/material/test-utils/*",
+          "../*",
+          "@/*/*",
+          "@testing-library/react"
+        ]
+      }
+    ]
+  }
 }
