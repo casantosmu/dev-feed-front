@@ -26,7 +26,7 @@ describe("Given a getHostname function", () => {
   });
 
   describe("When it receives 'https://host.name/'", () => {
-    test("Then it should return 'www.host.name'", () => {
+    test("Then it should return 'host.name'", () => {
       const fullUrl = "https://host.name/";
       const expectedHostname = "host.name";
 

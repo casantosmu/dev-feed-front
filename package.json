@@ -58,5 +58,11 @@
     "husky": "^8.0.0",
     "prettier": "^2.7.1",
     "typescript": "^4.8.4"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "@/dateLib": "<rootDir>/src/lib/dateLib",
+      "@/(.+)": "<rootDir>/src/$1"
+    }
   }
 }
