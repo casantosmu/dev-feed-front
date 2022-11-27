@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-imports */
 import React, { FC, ReactElement } from "react";
 import { render, RenderOptions } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";

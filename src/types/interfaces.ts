@@ -1,4 +1,4 @@
-import { constants } from "../config";
+import { constants } from "@/config";
 
 export type Categories = typeof constants.categories[number];
 

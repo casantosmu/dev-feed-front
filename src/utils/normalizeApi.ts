@@ -1,7 +1,7 @@
 import { string } from ".";
-import { config } from "../config";
-import dateLib from "../lib/dateLib";
-import { FeedAPI, Feed } from "../types";
+import { config } from "@/config";
+import dateLib from "@/dateLib";
+import { FeedAPI, Feed } from "@/types";
 
 export const feed = (feed: FeedAPI): Feed => {
   return {

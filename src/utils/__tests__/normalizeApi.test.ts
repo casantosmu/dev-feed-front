@@ -1,7 +1,7 @@
 import { normalizeApi } from "..";
-import { config } from "../../config";
-import dateLib from "../../lib/dateLib";
-import { FeedAPI, Feed } from "../../types";
+import { config } from "@/config";
+import dateLib from "@/dateLib";
+import { FeedAPI, Feed } from "@/types";
 
 describe("Given a feed function", () => {
   describe("When it receives a feed", () => {
